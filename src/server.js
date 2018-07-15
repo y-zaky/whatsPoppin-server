@@ -1,5 +1,9 @@
+const {getData, postData} = require('./query')
+
 const express = require('express')
 const app = express()
+
+
 
 const port = process.env.PORT || 1234;
 
@@ -24,6 +28,21 @@ app.get( '/', (req,res) => {
   // console.log(req)
   
   res.send(JSON.stringify("Hello World"))
+})
+
+app.get( '/get', (req,res) => {
+  // console.log(req)
+  getData((err, res) => {
+    if (err) {
+        
+        res.status(500).send('<h1>Sorry, there was a problem getting the users</h1>');
+        console.log(error);
+    } else {
+        let output = JSON.stringify(res);
+        res.send(output);
+    }
+});
+
 })
 
 app.listen(port, () => console.log('App live and listening on port 1234!'))
