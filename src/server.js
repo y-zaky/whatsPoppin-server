@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 
+const port = process.env.PORT || 1234;
+
+
 app.use(
   function (req, res, next) {
     // CORS headers
@@ -18,9 +21,9 @@ app.use(
 )
 
 app.get( '/', (req,res) => {
-  console.log(req)
+  // console.log(req)
   
   res.send(JSON.stringify("Hello World"))
 })
 
-app.listen(1234, () => console.log('App live and listening on port 1234!'))
+app.listen(port, () => console.log('App live and listening on port 1234!'))
