@@ -3,8 +3,6 @@ const {getData, postData} = require('./query')
 const express = require('express')
 const app = express()
 
-
-
 const port = process.env.PORT || 1234;
 
 
@@ -25,13 +23,16 @@ app.use(
 )
 
 app.get( '/', (req,res) => {
-  // console.log(req)
+console.log('da')
   
   res.send(JSON.stringify("Hello World"))
 })
 
-app.get( '/get', (req,res) => {
+app.post( '/get', (req,res) => {
   // console.log(req)
+  console.log('req',req.params)
+  console.log('dfsjfwefelwf')
+
   getData((err, res) => {
     if (err) {
         
@@ -39,6 +40,7 @@ app.get( '/get', (req,res) => {
         console.log(error);
     } else {
         let output = JSON.stringify(res);
+        console.log('congrats here is output', output)
         res.send(output);
     }
 });
