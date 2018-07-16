@@ -22,16 +22,18 @@ app.use(
   }
 )
 
-app.get( '/', (req,res) => {
-console.log('da')
-  
-  res.send(JSON.stringify("Hello World"))
-})
+//TODO - GET DATABASE PUT TO WORK :D
 
-app.post( '/get', (req,res) => {
+// app.get( '/', (req,res) => {
+// console.log('da')
+  
+//   res.send(JSON.stringify("Hello World"))
+// })
+
+app.get( '/get', (req,res) => {
   // console.log(req)
-  console.log('req',req.params)
-  console.log('dfsjfwefelwf')
+  // console.log('req',req.params)
+  console.log('dfsjfwefelwf', getData)
 
   getData((err, res) => {
     if (err) {
@@ -44,7 +46,7 @@ app.post( '/get', (req,res) => {
         res.send(output);
     }
 });
-
+// res.send(JSON.stringify("Hellsfwrfwfo World"))
 })
 
 app.listen(port, () => console.log('App live and listening on port 1234!'))

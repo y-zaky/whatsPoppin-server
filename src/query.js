@@ -1,6 +1,7 @@
 const dbConnection = require('../database/db_connection.js');
 
 const getData = (cb) =>{
+  dbConnection.connect()
     dbConnection.query(`SELECT * FROM repotest`
     , (err, res) => {
     if (err) cb(err);
