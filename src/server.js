@@ -33,13 +33,13 @@ app.use(
 app.get( '/get', (req,res) => {
   // console.log(req)
   // console.log('req',req.params)
-  console.log('dfsjfwefelwf', getData)
 
   getData((err, res) => {
     if (err) {
+      console.log('ERROR', err);
         
         res.status(500).send('<h1>Sorry, there was a problem getting the users</h1>');
-        console.log(error);
+        
     } else {
         let output = JSON.stringify(res);
         console.log('congrats here is output', output)
