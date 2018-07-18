@@ -34,7 +34,7 @@ app.get( '/get', (req,res) => {
   // console.log(req)
   // console.log('req',req.params)
 
-  getData((err, res) => {
+ const data = getData((err, res) => {
     if (err) {
       console.log('ERROR', err);
         
@@ -43,10 +43,12 @@ app.get( '/get', (req,res) => {
     } else {
         let output = JSON.stringify(res);
         console.log('congrats here is output', output)
-        res.send(output);
+        return output
     }
 });
-// res.send(JSON.stringify("Hellsfwrfwfo World"))
+
+console.log(data)
+res.send(data)
 })
 
 app.listen(port, () => console.log('App live and listening on port 1234!'))

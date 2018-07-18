@@ -11,7 +11,7 @@ const getData = (cb) =>{
 };
 
 const insertData = (name, cb) => {
-  dbConnection.query(`INSERT INTO repotest (name) VALUES (${name} )`, (err, res) => {
+  dbConnection.query(`INSERT INTO repos (name) VALUES (${name} )`, (err, res) => {
     if (err) return cb(err)
     return cb(null, res)
   });
