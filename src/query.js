@@ -1,12 +1,12 @@
 const dbConnection = require('../database/db_connection.js');
 dbConnection.connect()
 
-const getData = (cb) =>{
+const getData = (res) =>{
   return new Promise( (resolve, reject) => {
 
       dbConnection.query(`SELECT * FROM repos`, (err, res) => {
-        if (err) reject ( cb(err) )
-        resolve (cb(null, res.rows) )
+        if (err) reject ( new Error('Could not carry out query') )
+        resolve (res.rows)
       });
 
   })
