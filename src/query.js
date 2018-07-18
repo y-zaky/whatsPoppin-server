@@ -1,17 +1,20 @@
 const dbConnection = require('../database/db_connection.js');
+dbConnection.connect()
 
 const getData = (cb) =>{
-  dbConnection.connect()
-    .then(console.log('db connection successfull'))
-    dbConnection.query(`SELECT * FROM repos`
-    , (err, res) => {
-    if (err) cb(err);
-    cb(null, res.rows);
-  });
+  return new Promise( (resolve, reject) => {
+
+      dbConnection.query(`SELECT * FROM repos`, (err, res) => {
+        if (err) reject ( cb(err) )
+        resolve (cb(null, res.rows) )
+      });
+
+  })
+    
 };
 
 const insertData = (name, cb) => {
-  dbConnection.query(`INSERT INTO repos (name) VALUES (${name} )`, (err, res) => {
+  dbConnection.query(`INSERT INTO repotest (name) VALUES (${name} )`, (err, res) => {
     if (err) return cb(err)
     return cb(null, res)
   });

@@ -34,9 +34,9 @@ app.get( '/get', (req,res) => {
   // console.log(req)
   // console.log('req',req.params)
 
- const data = getData((err, res) => {
+  getData((err, res) => {
     if (err) {
-      console.log('ERROR', err);
+      console.log('ERROR', error);
         
         res.status(500).send('<h1>Sorry, there was a problem getting the users</h1>');
         
@@ -45,10 +45,10 @@ app.get( '/get', (req,res) => {
         console.log('congrats here is output', output)
         return output
     }
-});
-
-console.log(data)
-res.send(data)
+})
+.then( res => console.log('promise resss', res))
+.catch( err => console.log('promise err', err))
+// res.send(JSON.stringify("Hellsfwrfwfo World"))
 })
 
 app.listen(port, () => console.log('App live and listening on port 1234!'))
