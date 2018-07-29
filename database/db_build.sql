@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS superheroes cascade;
+DROP TABLE IF EXISTS repos cascade;
 
 CREATE TABLE repos (
   id SERIAL,

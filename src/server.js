@@ -1,4 +1,4 @@
-const {getData, postData} = require('./query')
+const {getData, insertData} = require('./query')
 
 const express = require('express')
 const app = express()
@@ -24,22 +24,27 @@ app.use(
 
 //TODO - GET DATABASE PUT TO WORK :D
 
-app.get( '/', (req,res) => {
-console.log('da')
+// app.get( '/', (req,res) => {
+// console.log('home hit')
   
-  res.send(JSON.stringify("Hello World"))
-})
+//   res.send(JSON.stringify("Hello World"))
+// })
 
-app.get( '/get', (req,res) => {
-  // let data;
-  getData(res)
-.then( data => res.send( JSON.stringify({response:data})) ) 
-.catch( err => console.log('promise err', err))
-// res.send(JSON.stringify("Hellsfwrfwfo World")
-})
+// app.get( '/get', (req,res) => {
+//   // let data;
+//   console.log('/get hit')
+//   getData(res)
+// .then( data => res.send( JSON.stringify({response:data})) ) 
+// .catch( err => console.log('promise err', err))
+// // res.send(JSON.stringify("Hellsfwrfwfo World")
+// })
 
 app.post('/save', (req,res) => {
-
+  console.log('\save hit')
+ 
+  insertData('hello m8')
+.then(data => res.send( JSON.stringify({response:data})) )
+.catch(err => console.log('post data error', err) )
 })
 
 app.listen(port, () => console.log('App live and listening on port 1234!'))

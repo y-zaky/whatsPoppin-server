@@ -5,7 +5,7 @@ const getData = (res) =>{
   return new Promise( (resolve, reject) => {
 
       dbConnection.query(`SELECT * FROM repos`, (err, res) => {
-        if (err) reject ( new Error('Could not carry out query') )
+        if (err) reject ( new Error('Could not get data from DB') )
         resolve (res.rows)
       });
 
@@ -13,11 +13,16 @@ const getData = (res) =>{
     
 };
 
-const insertData = (name, cb) => {
-  dbConnection.query(`INSERT INTO repos (reponame) VALUES (${name} )`, (err, res) => {
-    if (err) return cb(err)
-    return cb(null, res)
-  });
+const insertData = (name) => {
+  return new Promise ( (resolve, reject) => {
+
+    dbConnection.query(`INSERT INTO repos (reponame) VALUES ('${name}');`, (err, res) => {
+      if (err) reject ( new Error('Could not insert data into DB') )
+      resolve(res)
+    });
+
+  })
+  
 };
 
 module.exports = { getData, insertData };
