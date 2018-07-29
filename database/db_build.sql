@@ -2,8 +2,8 @@ BEGIN;
 
 DROP TABLE IF EXISTS superheroes cascade;
 
-CREATE TABLE repoTest (
-  id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE repos (
+  id SERIAL,
   reponame VARCHAR(200) NOT NULL
 );
 

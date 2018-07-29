@@ -24,18 +24,22 @@ app.use(
 
 //TODO - GET DATABASE PUT TO WORK :D
 
-// app.get( '/', (req,res) => {
-// console.log('da')
+app.get( '/', (req,res) => {
+console.log('da')
   
-//   res.send(JSON.stringify("Hello World"))
-// })
+  res.send(JSON.stringify("Hello World"))
+})
 
 app.get( '/get', (req,res) => {
-  let data;
+  // let data;
   getData(res)
 .then( data => res.send( JSON.stringify({response:data})) ) 
 .catch( err => console.log('promise err', err))
 // res.send(JSON.stringify("Hellsfwrfwfo World")
+})
+
+app.post('/save', (req,res) => {
+
 })
 
 app.listen(port, () => console.log('App live and listening on port 1234!'))
