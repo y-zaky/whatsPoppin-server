@@ -13,10 +13,10 @@ const getData = (res) =>{
     
 };
 
-const insertData = (name) => {
+const insertData = (name, id) => {
   return new Promise ( (resolve, reject) => {
 
-    dbConnection.query(`INSERT INTO repos (reponame) VALUES ('${name}');`, (err, res) => {
+    dbConnection.query(`INSERT INTO repos (reponame, id) VALUES ('${name}', '${id}');`, (err, res) => {
       if (err) reject ( new Error('Could not insert data into DB') )
       resolve(res)
     });
